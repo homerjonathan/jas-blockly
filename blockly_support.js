@@ -9,7 +9,7 @@ BlocklySup = function () {
 // Get Blockly List of Commands - Needed by App
 BlocklySup.prototype.GetBlocklyList = function(done) {
     var _this = this;
-    appUtils._GetWithData(this.pathWebRestful + "blockly/list/all",function(success,data) {
+    appUtils._GetWithData(appUtils.pathWebRestful + "blockly/list/all",function(success,data) {
         _this.blockly = data;
         if (done != undefined) {
             done();
