@@ -73,7 +73,7 @@ BlocklySup.prototype.RunBlocklyCode = function(id, dataPack) {
         if (typeof this.BlocklyEvent[escapedID] === "function") {
             console.log("Running Blockly!");
             try {
-                this.BlocklyEvent[escapedID](this,dataPack);
+                this.BlocklyEvent[escapedID](blocklyCMD,dataPack);
             } catch (e) {
                 console.error(e);
             }
@@ -95,10 +95,10 @@ BlocklySup.prototype.RunBlocklyCodeData = function(id, data, object) {
     var escapedID = id.replace(/ /g,'_');
     this.BlocklyEvent = window[this.blocklyObject];
     if (this.BlocklyEvent != undefined) {
-        if (this.BlocklyEvent[escapedID] === "function") {
+        if (typeof this.BlocklyEvent[escapedID] === "function") {
             console.log("Running Blockly!");
             try {
-                this.BlocklyEvent[escapedID](data,this,object);
+                this.BlocklyEvent[escapedID](data,blocklyCMD,object);
             } catch (e) {
                 console.error("Error: Running Blockly Command " + id);
                 console.error(e);
@@ -113,6 +113,19 @@ BlocklySup.prototype.RunBlocklyCodeData = function(id, data, object) {
         return false;
     }
 };
+BlocklySup.prototype.reloadSamsBlockly = function () {
+    function reload_js(src) {
+        appUtils.each('script[src="' + src + '"]', function(obj) {
+            obj.remove();
+        });
+        var newSE = document.createElement('script');
+        newSE.setAttribute('src',src);
+        document.head.appendChild(newSE);
+    }
+    reload_js('library/sams_blockly.js');
+};
+
+
 //
 // Startup and Create Object
 //
