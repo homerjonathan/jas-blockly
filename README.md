@@ -21,6 +21,7 @@ Copy the update into jas-blockly dir.  We need:
 
 blockly_compressed.js
 blocks_compressed.js
+javascript_compress.js
 messages.js
 
 blockly_support.js - Keep this!
