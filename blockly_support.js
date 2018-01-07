@@ -6,6 +6,8 @@
 class BlocklySup {
     constructor() {
         this.blocklyObject = "SamsBlocklyEvent";
+        this._BlocklyListEvents = null;
+        this._BlocklyListData = null;
     }
 
     // Get Blockly List of Commands - Needed by App
@@ -56,7 +58,7 @@ class BlocklySup {
         this._BlocklyListEvents = [];
         this._BlocklyListData = [];
         while (aList = this.blockly.blockly[i++]) {
-            if (aList.type == "event") {
+            if (aList.type === "event") {
                 this._BlocklyListEvents[this._BlocklyListEvents.length] = {"text": aList.id, "value": aList.id};
             } else {
                 this._BlocklyListData[this._BlocklyListData.length] = {"text": aList.id, "value": aList.id};
@@ -149,3 +151,4 @@ class BlocklySup {
 //
 var blocklySup;
 blocklySup = new BlocklySup();
+
