@@ -66,8 +66,8 @@ class BlocklySup {
 
         }
         // Add In None Option
-        this._BlocklyListEvents.unshift({"id": "", "text": "[none]"});
-        this._BlocklyListData.unshift({"id": "", "text": "[none]"});
+        this._BlocklyListEvents.unshift({"value": "", "text": "[none]"});
+        this._BlocklyListData.unshift({"value": "", "text": "[none]"});
     }
     //
     // Run Blockly Generated Code with ID and data pack that links to device controlling
